@@ -6,12 +6,14 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// Person is a human like object
 type Person struct {
 	ID   string
 	Name string
 	Age  int
 }
 
+// PersonMap is an in memory DB of all persons in the system
 var PersonMap = map[string]Person{
 	"4571CA38-BF46-4FA7-A507-1D2E124B9F2E": Person{
 		ID:   "4571CA38-BF46-4FA7-A507-1D2E124B9F2E",
@@ -20,6 +22,7 @@ var PersonMap = map[string]Person{
 	},
 }
 
+// PersonHandler is the top level method router for person operations
 func PersonHandler(w http.ResponseWriter, r *http.Request) {
 	log.Debug("Starting personHandler")
 	defer log.Debug("Finished personHandler")

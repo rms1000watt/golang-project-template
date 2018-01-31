@@ -7,6 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// PersonHandlerGET retrieves person data based on ID
 func PersonHandlerGET(w http.ResponseWriter, r *http.Request) {
 	log.Debug("Starting PersonHandlerGET")
 	defer log.Debug("Finished PersonHandlerGET")

@@ -11,12 +11,14 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// CORSOrigins is the whitelisted list of CORS origins for middleware
 var CORSOrigins = []string{
 	"https://localhost",
 	"https://127.0.0.1",
 	"https://www.example.com",
 }
 
+// Serve starts the server
 func Serve(cfg Config) {
 	addr := fmt.Sprintf("%s:%d", cfg.Host, cfg.Port)
 
@@ -33,6 +35,7 @@ func Serve(cfg Config) {
 	log.Fatal(srv.ListenAndServeTLS(filepath.Join(cfg.CertsPath, cfg.CertName), filepath.Join(cfg.CertsPath, cfg.KeyName)))
 }
 
+// ServerHandler maps all the paths to handlers via mux
 func ServerHandler() http.Handler {
 	belly.SetCORSOrigins(CORSOrigins)
 

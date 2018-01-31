@@ -11,7 +11,7 @@ var serveCmd = &cobra.Command{
 	Short:   "Start the server",
 	Long:    `Start the server`,
 	Example: `./golang-project-template serve`,
-	Run:     ServeFunc,
+	Run:     serveFunc,
 }
 
 var serveCfg serve.Config
@@ -26,10 +26,10 @@ func init() {
 	serveCmd.Flags().StringVar(&serveCfg.CertName, "cert-name", "server.crt", "Public key name")
 	serveCmd.Flags().StringVar(&serveCfg.KeyName, "key-name", "server.key", "Private key name")
 
-	SetFlagsFromEnv(serveCmd)
+	setFlagsFromEnv(serveCmd)
 }
 
-func ServeFunc(cmd *cobra.Command, args []string) {
+func serveFunc(cmd *cobra.Command, args []string) {
 	configureLogging()
 
 	serve.Serve(serveCfg)

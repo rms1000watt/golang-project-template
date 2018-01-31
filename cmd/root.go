@@ -24,9 +24,10 @@ var logLevel string
 func init() {
 	rootCmd.PersistentFlags().StringVar(&logLevel, "log-level", "info", "Set log level (debug, info, warn, error, fatal)")
 
-	SetPFlagsFromEnv(rootCmd)
+	setPFlagsFromEnv(rootCmd)
 }
 
+// Execute gets called from the main project directory for convenience
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
@@ -34,7 +35,7 @@ func Execute() {
 	}
 }
 
-func SetPFlagsFromEnv(cmd *cobra.Command) {
+func setPFlagsFromEnv(cmd *cobra.Command) {
 	// Courtesy of https://github.com/coreos/pkg/blob/master/flagutil/env.go
 	cmd.PersistentFlags().VisitAll(func(f *pflag.Flag) {
 		key := strings.ToUpper(strings.Replace(f.Name, "-", "_", -1))
@@ -46,7 +47,7 @@ func SetPFlagsFromEnv(cmd *cobra.Command) {
 	})
 }
 
-func SetFlagsFromEnv(cmd *cobra.Command) {
+func setFlagsFromEnv(cmd *cobra.Command) {
 	// Courtesy of https://github.com/coreos/pkg/blob/master/flagutil/env.go
 	cmd.Flags().VisitAll(func(f *pflag.Flag) {
 		key := strings.ToUpper(strings.Replace(f.Name, "-", "_", -1))

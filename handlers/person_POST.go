@@ -7,6 +7,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+// PersonHandlerPOST sets person data based on ID
 func PersonHandlerPOST(w http.ResponseWriter, r *http.Request) {
 	log.Debug("Starting PersonHandlerPOST")
 	defer log.Debug("Finished PersonHandlerPOST")
