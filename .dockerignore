@@ -1,0 +1,7 @@
+Dockerfile
+golang-project-template
+openssl.cnf
+Readme.md
+build.sh
+vendor/*
+!vendor/vendor.json

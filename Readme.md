@@ -6,23 +6,43 @@ This is the starting point for a Golang project with Gometalinter, Govendor, TDD
 
 ## Contents
 
-- [Prerequisities](#prerequisities)
+- [Install](#install)
+- [Build](#build)
+- [Run](#run)
+- [cURL](#curl)
+- [TODO](#todo)
 
-## Prerequisities
+## Install
 
 ```bash
 # Govendor
 go get -u github.com/kardianos/govendor
 govendor sync
-
-# Certs (Self signed for now)
-mkdir certs
-openssl req -x509 -out certs/server.crt -newkey rsa:4096 -keyout certs/server.key -days 365 -nodes -config openssl.cnf -extensions v3_ext
 ```
 
-## Usage
+## Build
 
 ```bash
-go build
-./golang-project-template serve
+./build.sh
 ```
+
+## Run
+
+```bash
+# Binary
+./golang-project-template serve
+
+# Docker
+docker-compose up -d
+```
+
+## cURL
+
+```bash
+curl -H "Origin:https://localhost" --cacert certs/ca.crt -d '{"id":"70640AC2-E6FA-415E-B70B-DE64F74FBF24","name":"ryan"}' -X POST https://localhost:8080/person
+curl -H "Origin:https://localhost" --cacert certs/ca.crt -d '{"id":"70640AC2-E6FA-415E-B70B-DE64F74FBF24"}' https://localhost:8080/person
+```
+
+## TODO
+
+- [ ] Travis ci

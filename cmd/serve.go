@@ -19,7 +19,7 @@ var serveCfg serve.Config
 func init() {
 	rootCmd.AddCommand(serveCmd)
 
-	serveCmd.Flags().StringVar(&serveCfg.Host, "host", "127.0.0.1", "Host to listen on")
+	serveCmd.Flags().StringVar(&serveCfg.Host, "host", "", "Host to listen on")
 	serveCmd.Flags().IntVar(&serveCfg.Port, "port", 7100, "Port to listen on")
 
 	serveCmd.Flags().StringVar(&serveCfg.CertsPath, "certs-path", "certs", "Certs path where the Private/Public key live")

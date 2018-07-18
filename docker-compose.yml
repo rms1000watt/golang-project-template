@@ -1,0 +1,14 @@
+version: '3.6'
+services:
+  golang-project-template:
+    container_name: golang-project-template
+    command: serve
+    environment:
+      PORT: 8080
+      LOG_LEVEL: debug
+      CERTS_PATH: /certs
+    image: golang-project-template:latest
+    ports:
+    - 8080:8080
+    volumes:
+    - ./certs:/certs
